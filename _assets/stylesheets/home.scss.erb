@@ -10,7 +10,7 @@ $phone:  540px;
   position: relative;
   height: 50vh;
   background-color: darkblue;
-  font-size: 48pt;
+  font-size: 28pt;
   color: white;
   background-color: none;
   background-image: url(<%= asset_path "../images/syria.jpg" %>);
@@ -22,22 +22,22 @@ $phone:  540px;
     position:absolute;
     top:50%;
     left:50%;
-    transform: translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%); 
     margin-right: -50%;
   }
   @media screen and (max-width: $large){
-    font-size: 36pt;
+    font-size: 26pt;
   }
   @media screen and (max-width: $tablet){
-    font-size: 32pt;
+    font-size: 24pt;
   }
   @media screen and (max-width: $phone){
-    font-size: 26pt;
+    font-size: 22pt;
   }
 }
 
 #intro-text{
-  // height: 17vh;
   color: white;
   font-size: 28pt;
   text-align: center;
@@ -59,8 +59,8 @@ $phone:  540px;
 }
 
 #video{
-  padding-bottom: 4vh;
-  background-color: black;
+  padding: 8vh 0 2vh 0;
+  background-color: #928887;
 }
 
 .video-wrapper{
@@ -69,13 +69,83 @@ $phone:  540px;
   padding-top: 25px;
   height: 0;
   & iframe{
+    margin: auto;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    margin-left: -40%;
+    @media screen and (max-width: $phone){
+      width:100%;
+      height: 100%;
+      margin-left: 0;
+      left: 0;
+    }
   }
 }
+
+.video-wrapper + .share-social{
+    top: -5vh;
+  }
+
+.share-text{
+  font-family: $title-bold;
+  text-align: center;
+  color: #f9e4e3;
+  font-size: 24pt;
+  margin-top: -8%;
+  @media screen and (max-width: $phone){
+    margin-bottom: 0;
+    margin-top: 12%;
+    font-size: 14pt;
+  }
+}
+
+.share-social {
+  position: relative;
+  font-size: 34pt;
+  margin: auto;
+  text-align: center;
+  width: 40%;
+  & a{
+    padding: 3% 2% 0 2%;
+    box-sizing: border-box;
+    color: #DDDDDD;
+    &:visited{
+      color: #DDDDDD;
+    }  
+    &:hover{
+      text-shadow: 0px 2px 2px #3d67ba; color: #444444;
+      text-decoration: none;
+    }
+     @media screen and (max-width: $tablet){
+    padding-top: 4%;
+    font-size: 18pt;
+  }
+  
+  }
+  @media screen and (max-width: $tablet){
+    font-size: 40pt;
+    top: -2vh;
+  }
+  @media screen and (max-width: $phone){
+    font-size: 32pt;
+    top: 0;
+  }
+}
+
+.twitter{
+  background-color: #5ea9dd;
+ }
+
+.facebook{
+  background-color: #3b5998;
+  @media screen and (max-width: $tablet){
+    padding-top: 6%;
+  }
+}
+
+
 
 #the-facts{
   // height: 55vh;
@@ -84,7 +154,7 @@ $phone:  540px;
   font-size: 48pt;
   color: white;
   background-color: #2ed171;
-  padding: 5vh 2vw 7vh 2vw;
+  padding: 5vh 2vw 3vh 2vw;
   letter-spacing: 0.3vw;
   @media screen and (max-width: $tablet){
     font-size: 38pt;
@@ -101,11 +171,37 @@ $phone:  540px;
     color: #208e4c;
     text-decoration: none;
   }
+  & .share-social a{
+    transform: none;
+    padding: 1% 2% 0 2%;
+    box-sizing: border-box;
+    color: #DDDDDD;
+    &:visited{
+      color: #DDDDDD;
+    }  
+    &:hover{
+      text-shadow: 0px 2px 2px #3d67ba; color: #444444;
+      text-decoration: none;
+    }  
+  }
 }
 
+#img-share-text{
+  letter-spacing: 0;
+  font-size: 24pt;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  @media screen and (max-width: $phone){
+    margin-top: 6%;
+    font-size: 14pt;
+    margin-bottom: 0;
+  }
+}
+
+
 .banner-wrapper{
-  padding-top: 4vh;
-  max-width: 1080px;
+  padding-top: 2vh;
+  max-width: 800px;
   margin: auto;
 }
 
@@ -117,11 +213,11 @@ ul.bxslider{
 
 
 #act{
-  // height: 55vh;
   text-align: center;
   font-family: $title-bold;
   font-size: 48pt;
   color: white;
+  margin: 0 auto;
   background-color: black;
   padding-top: 4vh;
   letter-spacing: 0.2vw;
@@ -136,52 +232,168 @@ ul.bxslider{
 
 .petition-head{
   padding: 2vh 0 2vh 0;
+  font-size: 28pt;
+  margin: auto;
+  width: 80%;
+  background-color: #eacd27;
+  border-radius: 40px 5px 40px 5px;
+
+  @media screen and (max-width: $phone){
   font-size: 20pt;
-  margin: auto;
-  width: 80%;
-  background-color: #ffa445;
-  border-radius: 20px 20px 0px 0px;
+  padding: 2vh 6vw 2vh 6vw;
+  }
 }
 
-.petition-body{
-  margin: auto;
-  margin-top: -3%;
+.petition-right{
+  display: inline-block;
   font-size: 16pt;
-  width: 80%;
-  padding: 7% 5% 8% 5%;
-  border: solid 3px #ffa445;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
+  width: 50%;
+  margin-left: 0;
+  padding: 3vh 10vw 4vh 2vw;
+  border-left: solid 3px #eacd27;
 
-.petition-lower{
-  font-size: 16pt;
-  margin: auto;
-  width: 80%;
+  z-index: 10;
   box-sizing: border-box;
-  padding: 4vh 8vw 4vh 8vw;
-  background-color: #a5a5a5;
-  margin-top: -5%;
-  color: black;
-  border-radius: 0 0 20px 20px;
-  border-top: 2px solid #d0cfce;
-}
-
-#in-the-news{
-  height: 55vh;
-  text-align: center;
-  font-family: $title-bold;
-  font-size: 48pt;
-  color: white;
-  background-color: #28d2ed;
-  padding: 4vh 8vw 4vh 8vw;
-  letter-spacing: 0.2vw;
   @media screen and (max-width: $tablet){
-    font-size: 36pt;
+    font-size: 14pt;
   }
   @media screen and (max-width: $phone){
-    font-size: 26pt;
+    border-top: solid 3px #eacd27;
+    border-bottom: solid 3px #eacd27;
+    border-left: none;
+    width: 100%;
+    padding: 4%;
   }
+}
+
+.petition-left{
+  font-size: 16pt;
+  float: left;
+  margin: auto;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 3vh 2vw 0vh 10vw;
+  color: white;
+  border-radius: 0 0 20px 20px;
+  @media screen and (max-width: $tablet){
+    font-size: 14pt;
+  }
+  @media screen and (max-width: $phone){
+    float: none;
+    width: 100%;
+    padding: 4%;
+  }
+}
+
+form{
+  padding-top: 4vh;
+  padding-bottom: 6vh;
+  clear: both;
+  margin: auto;
+  font-size: 16pt;
+  width: 70%;
+  max-width: 700px;
+  text-align: center;
+  border-top: solid 3px #eacd27;
+  border-left: solid 3px #eacd27;
+  border-right: solid 3px #eacd27;
+  & img{
+    display: inline-block;
+    position: relative;
+    opacity: 0.0;
+    transform: scale(0.5);
+    transform: translate(-4vw, 5vh);
+    transition: all 0.3s ease-in-out;
+    // z-index: -10;
+  }
+  @media screen and (max-width: $tablet){
+    font-size: 14pt;
+  }
+  @media screen and (max-width: $phone){
+    border: none;
+  }
+}
+
+label{
+  display: inline-block;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  width: 28%;
+  vertical-align: middle;
+  text-align: right;
+  @media screen and (max-width: $phone){
+    width: 30%;
+    margin-left: 0;
+  }
+}
+
+input{
+  display: inline-block;
+  width: 24%;
+  text-align: left;
+  margin-right: 22%;
+  @media screen and (max-width: $phone){
+    width: 40%;
+  }
+}
+
+input[type="submit"]{
+  display: inline-block;
+  text-align: center;
+  margin-left: 14%;
+  margin-right: 2vw;
+  margin-top: 3vh;
+  width: 214px;
+  padding: 2% ;
+  font-size: 18pt;
+  background-color: #eacd27;
+  border: none;
+  font-family: $body-text;
+  color: white;
+  transition: all .2s ease-in-out;
+  @media screen and (max-width: $tablet){
+    font-size: 14pt;
+    width: 180px;
+  }
+   @media screen and (max-width: $phone){
+    font-size: 12pt;
+    width: 140px;
+    margin-left: 11vw;
+  }
+}
+
+input[type="submit"]:hover{
+    background: none;
+    border: none;
+    text-decoration: none;
+  }
+input[type="submit"]:hover + img{
+  transform: translate(-4vw,0vh);
+  opacity: 1;
+}
+
+#conf-message{
+  font-size: 16pt;
+  display: none;
+  padding: 4vh 3vw 4vh 3vw;
+  width: 50%;
+  margin: auto;
+  border: solid 3px #eacd27;
+  border-bottom: none;
+
+  @media screen and (max-width: $tablet){
+    font-size: 14pt;
+    border: none;
+  }
+  @media screen and (max-width: $phone){
+    font-size: 12pt;
+    border: none;
+  }
+}
+
+.attrib{
+  font-size: 6pt;
+  padding: 0;
 }
 
 .wrapper{
@@ -194,6 +406,31 @@ ul.bxslider{
 }
 
 .site-footer{
-  background-color: black;
+  background-color: white;
   border: black;
+}
+
+.site-footer{
+  & a{
+    font-size: 16pt;
+    margin-right: 2vw;
+    padding-top: 20vh;
+    &:hover{
+      text-decoration: none;
+      cursor: hand;}
+    }
+    @media screen and (max-width: $tablet){
+      font-size: 12pt;
+    }
+}
+
+.footer-col-1{
+  & img{
+    padding: 2%;
+    width: 30%;
+  }
+  & span{
+    width:100%;
+    text-align: left;
+  }
 }
