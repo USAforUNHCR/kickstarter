@@ -5,7 +5,7 @@ $(document).ready(function(){
   slider = $('.bxslider').bxSlider({
     adaptiveHeight: true,
     pager: false,
-    controls: false,
+    controls: true,
   });
 
   nextListener(slider);
