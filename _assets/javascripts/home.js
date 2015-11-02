@@ -12,6 +12,9 @@ $(document).ready(function(){
   prevListener(slider);
   submitEventListener();
 
+  $(function () {
+    $('#slickQuiz').slickQuiz();
+  });
   
 })
 
