@@ -114,6 +114,9 @@ $phone:  540px;
   vertical-align: middle;
   width: 40%;
   & a{
+    display: inline-block;
+    max-width: 105px;
+    max-height: 45px;
     padding: 2% 3% 2% 3%;
     border-radius: 7px;
     box-sizing: border-box;
@@ -124,10 +127,15 @@ $phone:  540px;
     &:hover{
       text-decoration: none;
     }
-     @media screen and (max-width: $tablet){
+    @media screen and (max-width: $tablet){
     padding-top: 4%;
-    font-size: 18pt;
-  }
+    font-size: 14pt;
+    }
+    @media screen and (max-width: $phone){
+      font-size: 12pt;
+      width: 100%;
+    }
+
   
   }
   @media screen and (max-width: $tablet){
@@ -154,7 +162,10 @@ $phone:  540px;
   }
 }
 
-
+.dummy-graphic{
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
 
 #the-facts{
   font-family: $body-text;
@@ -177,7 +188,7 @@ $phone:  540px;
   }
 }
 
-#img-share-text{
+.img-share-text{
   letter-spacing: 0;
   font-size: 12pt;
   margin-top: 2%;
