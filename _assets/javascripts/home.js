@@ -2,69 +2,49 @@
 
 $(document).ready(function(){
   
-  slider = $('.bxslider').bxSlider({
-    adaptiveHeight: true,
-    pager: false,
-    controls: true,
+  var gw = new Groundwork({
+    'api-url': 'https://un.dev.thegroundwork.com',
+    'oauth_client_id': 'U5uNl/UrqxMob5ZQFBIsE3FW6dAogwrAYQAA+MximWKBwCnpgOB5WavsNbiyImL4+5vmq4t5F1TAKRIMVQnE0w=='
+
   });
+  var id = getId();
+  shareListener(id,gw);
+});
 
-  nextListener(slider);
-  prevListener(slider);
-  submitEventListener();
 
-  $(function () {
-    $('#slickQuiz').slickQuiz();
-  });
-  
-})
-
-function nextListener(slider){
-  $('.next-slide').click(function(event){
+function shareListener(id,gw){
+  $('.share-social').click(function(event){
     event.preventDefault();
-    console.log(slider);
-    slider.goToNextSlide();
+    var network = $(event.target).attr('class');
+    sendData(id,network,gw);
   });
 }
 
-function prevListener(slider){
-  $('.prev-slide').click(function(event){
-    event.preventDefault();
-    slider.goToPrevSlide();
-  });
+function getId(){
+  var id = /=(.*)/.exec(document.location.href);
+  if(id){
+  return id[1];
+  }
+  else{
+    return -1
+  }
 }
 
-function submitEventListener(){
-  $form = $("#petition");
-
-  $form.submit(function(event){
-    console.log(event);
-    event.preventDefault();
-    $('.submit-button').val('Please Wait...').prop('disabled',true);
-
-    $.ajax({
-      type: 'POST',
-      url: '//nyc.us11.list-manage.com/subscribe/post-json?u=7aa897cfc40f7cfbb83ffadd4&amp;id=c8e53459bc&c=?',
-      data: $form.serialize(),
-      timeout: 5000,
-      cache: false,
-      dataType: 'jsonp',
-      contentType: "application/json; charset=utf-8",
-      error: function(err) {console.log("Error.")},
-      success: function(data){
-        if (data.result != "success") {
-          $('.submit-button').val('Please Wait...').prop('disabled',true);
-          $('#conf-message').html('').slideUp(700);
-          $('#conf-message').html("Something went wrong, please try to submit your details again.").slideDown(700, function(){
-            $('.submit-button').val('Raise Your Hand!').prop('disabled',false);
-          });
-        }
-        else {
-          $('#petition').slideUp(700, function(){
-            $('#conf-message').html("Thanks! We sent you an email. Please confirm your email address to raise your hand for refugees.").slideDown(700);
-          });
-          
-        }
-      }
-    });
+function sendData(id,network,gw){
+  var data = {
+    source: "refugeesurvey graphic",
+    email: "junk@junk.com",
+    tags: {
+      id: id,
+      network: network
+    }
+  }
+  console.log(data);
+  gw.supporters.create(data)
+  .then(function(res){
+    console.log(res);
+  })
+  .catch(function(res){
+    console.log(res);
   });
-}
+};
