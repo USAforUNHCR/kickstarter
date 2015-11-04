@@ -8,23 +8,47 @@ $phone:  540px;
 
 #top-headline{
   position: relative;
-  height: 50vh;
+  height: 30vh;
   background-color: darkblue;
   font-size: 28pt;
   color: white;
   background-color: none;
   background-image: url(<%= asset_path "../images/syria.jpg" %>);
   background-attachment: fixed;
+  @media screen and (max-height: 1000px){
+    height: 400px;
+  }
   & h1{
     padding: 5%;
     font-family: $title-bold;
     font-weight: 700;
     position:absolute;
-    top:50%;
+    top:30%;
     left:50%;
-    -webkit-transform:translate(-50%,-50%);
-    transform:translate(-50%,-50%); 
+    -webkit-transform:translate(-50%,-30%);
+    transform:translate(-50%,-40%); 
     margin-right: -50%;
+  }
+  @media screen and (max-width: $large){
+    font-size: 26pt;
+  }
+  @media screen and (max-width: $tablet){
+    font-size: 24pt;
+  }
+  @media screen and (max-width: $phone){
+    font-size: 22pt;
+  }
+  & h3{
+    padding: 5%;
+    font-family: $title-bold;
+    font-weight: 700;
+    position:absolute;
+    top:80%;
+    left:50%;
+    -webkit-transform:translate(-50%,-70%);
+    transform:translate(-50%,-60%); 
+    margin-right: -50%;
+    margin-top: 5px;
   }
   @media screen and (max-width: $large){
     font-size: 26pt;
@@ -39,11 +63,11 @@ $phone:  540px;
 
 #intro-text{
   color: white;
-  font-size: 28pt;
+  font-size: 20pt;
   text-align: center;
   background-color: #928887;
   font-family: $body-text;
-  padding: 7% 10vw 7% 10vw;
+  padding: 3% 5vw 3% 5vw;
   // padding-left: 10vw;
   // padding-right: 10vw;
   & p{

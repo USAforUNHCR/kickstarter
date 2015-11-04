@@ -3,8 +3,8 @@
 $(document).ready(function(){
   
   var gw = new Groundwork({
-    'api-url': 'https://un.dev.thegroundwork.com',
-    'oauth_client_id': 'U5uNl/UrqxMob5ZQFBIsE3FW6dAogwrAYQAA+MximWKBwCnpgOB5WavsNbiyImL4+5vmq4t5F1TAKRIMVQnE0w=='
+    'api_url': 'https://un-api.thegroundwork.com',
+    'oauth_client_id': 'pub-un.un-test--s5nLtfhyTW_yoshd7vr9fPOYz9xy6XxomJGVmtMwnLpTowm4x.eFgqe8zqbEH5dcIG1R38j6DEeW1dS7.ArjMg'
 
   });
   var id = getId();
@@ -40,12 +40,14 @@ function getId(){
 function sendData(inData,gw){
   var data = {
     source: "refugeesurvey graphic",
-    email: "junk@junk.com",
     tags: {
-      id: inData.id,
       network: inData.network,
-      imgNumber: inData.imgNumber
+      imgNumber: inData.imgNumber,
+      send_email: 0
     }
+  }
+  if(inData.id !== -1){
+    data.externalId = inData.id.toString();
   }
   console.log(data);
   gw.supporters.create(data)
