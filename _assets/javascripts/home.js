@@ -49,7 +49,6 @@ function sendData(inData,gw){
   if(inData.id !== -1){
     data.externalId = inData.id.toString();
   }
-  console.log(data);
   gw.supporters.create(data)
   .then(function(res){
     console.log(res);
