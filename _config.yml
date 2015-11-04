@@ -1,9 +1,9 @@
 # Site settings
-title: Forced to Flee
+title: Refugee Survey
 email: your-email@domain.com
-description: Forced to flee. The refugee crisis is real. Nearly 60 million people have beeen forced to flee their homes worldwide. The numbers will rise. Get educated get involved and take action to help us stop the crisis.
+description: The refugee crisis is real. Nearly 60 million people have beeen forced to flee their homes worldwide. The numbers will rise. Get educated get involved and take action to help us stop the crisis.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://forcedtoflee.com" # the base hostname & protocol for your site
+url: "http://refugeesurvey.com" # the base hostname & protocol for your site
 
 permalink: pretty
 

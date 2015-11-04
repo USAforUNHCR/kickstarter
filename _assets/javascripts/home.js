@@ -14,9 +14,16 @@ $(document).ready(function(){
 
 function shareListener(id,gw){
   $('.share-social').click(function(event){
-    event.preventDefault();
-    var network = $(event.target).attr('class');
-    sendData(id,network,gw);
+    event.preventDefault(); //BUGBUG - Remove before deploying, prevents sharing.
+    var imgNumber = /\d/.exec($(this).attr('class'))[0];
+    var target = $(event.target);
+    var network = target.attr('class');
+    var data = {
+      id: id,
+      network: network,
+      imgNumber: imgNumber
+    };
+    sendData(data,gw);
   });
 }
 
@@ -30,13 +37,14 @@ function getId(){
   }
 }
 
-function sendData(id,network,gw){
+function sendData(inData,gw){
   var data = {
     source: "refugeesurvey graphic",
     email: "junk@junk.com",
     tags: {
-      id: id,
-      network: network
+      id: inData.id,
+      network: inData.network,
+      imgNumber: inData.imgNumber
     }
   }
   console.log(data);
