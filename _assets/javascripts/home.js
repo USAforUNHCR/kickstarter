@@ -3,8 +3,8 @@
 $(document).ready(function(){
   
   var gw = new Groundwork({
-    'api_url': 'https://un-api.thegroundwork.com',
-    'oauth_client_id': 'pub-un.un-test--s5nLtfhyTW_yoshd7vr9fPOYz9xy6XxomJGVmtMwnLpTowm4x.eFgqe8zqbEH5dcIG1R38j6DEeW1dS7.ArjMg'
+    'api_url': 'https://api.thegroundwork.com',
+    'oauth_client_id': 'pub-un.refugeesurvey-int-TMo.3qerdLuxruWXl9xSk2_6Lg_TZnhg9b1roTHtmgN8.TQmBi6niAwOfLQ_xBuQBiftjYKXCKn_Od2_Uu7dNw'
 
   });
   var id = getId();
@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 function shareListener(id,gw){
   $('.share-social').click(function(event){
-    event.preventDefault(); //BUGBUG - Remove before deploying, prevents sharing.
+    event.preventDefault();
     var imgNumber = /\d/.exec($(this).attr('class'))[0];
     var target = $(event.target);
     var network = target.attr('class');
