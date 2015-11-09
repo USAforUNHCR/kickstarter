@@ -5,7 +5,6 @@ $(document).ready(function(){
   var gw = new Groundwork({
     'api_url': 'https://api.thegroundwork.com',
     'oauth_client_id': 'pub-un.refugeesurvey-int-TMo.3qerdLuxruWXl9xSk2_6Lg_TZnhg9b1roTHtmgN8.TQmBi6niAwOfLQ_xBuQBiftjYKXCKn_Od2_Uu7dNw'
-
   });
   var id = getId();
   shareListener(id,gw);
@@ -14,7 +13,6 @@ $(document).ready(function(){
 
 function shareListener(id,gw){
   $('.share-social').click(function(event){
-    event.preventDefault();
     var imgNumber = /\d/.exec($(this).attr('class'))[0];
     var target = $(event.target);
     var network = target.attr('class');
@@ -57,3 +55,6 @@ function sendData(inData,gw){
     console.log(res);
   });
 };
+
+
+
