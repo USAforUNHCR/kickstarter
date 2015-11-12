@@ -7,23 +7,11 @@ $(document).ready(function(){
     'oauth_client_id': 'pub-un.refugeesurvey-int-TMo.3qerdLuxruWXl9xSk2_6Lg_TZnhg9b1roTHtmgN8.TQmBi6niAwOfLQ_xBuQBiftjYKXCKn_Od2_Uu7dNw'
   });
   var id = getId();
-  shareListener(id,gw);
+  quiz();
 });
 
 
-function shareListener(id,gw){
-  $('.share-social').click(function(event){
-    var imgNumber = /\d/.exec($(this).attr('class'))[0];
-    var target = $(event.target);
-    var network = target.attr('class');
-    var data = {
-      id: id,
-      network: network,
-      imgNumber: imgNumber
-    };
-    sendData(data,gw);
-  });
-}
+
 
 function getId(){
   var id = /=(.*)/.exec(document.location.href);
