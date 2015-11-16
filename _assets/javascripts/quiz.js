@@ -114,7 +114,7 @@ function sendResults(){
       send_email: 0
     }
   }
-  id ? data.external_id = id : null;
+  id ? data.externalId = id : null;
   sendData(data);
 }
 
@@ -122,8 +122,8 @@ function storeLocal(points){
   var dataStore = {
     answers: ansCollection,
     points: points,
-    id: id
   }
+  id ? dataStore.id = id : null;
   console.log(dataStore);
   localStorage.setItem('refugeeQuiz', JSON.stringify(dataStore));
 }
