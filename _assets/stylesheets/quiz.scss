@@ -20,6 +20,10 @@ $body-text: helvetica, arial, sans-serif;
   border: 3px solid blue;
   min-height: 80px;
   margin-bottom: 5px;
+  transition: all 0.5s ease-in-out;
+  &:hover{
+    transform: translate(4%, 0px);
+  }
 }
 .ans-button{
   box-sizing: border-box;
@@ -37,7 +41,7 @@ $body-text: helvetica, arial, sans-serif;
 
 .answer{
   vertical-align: middle;
-  background: white;
+  background-color: white;
   font-size: 18pt;
   width: 70%;
   margin-left: 20%;

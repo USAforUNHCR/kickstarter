@@ -1,32 +1,24 @@
 'use-strict';
 
-var introText = "This is the intro text.";
+var introText = "Do you know which communities in the U.S. are most welcoming for refugees?";
 var ansElement = {};
 var qElement = {};
-var ansCollection = {};
-var questions = {
+var ansCollection = [];
 
-    1: {
-          q: "Here is the first Question",
-          answers:[ 
-            "First Answer",
-            "Second Answer",
-            "Third Answer",
-            "Fourth Answer"  
-          ],
-          a: 2
-        },
-    2: {
-          q: "Here is the second Question",
-          answers:[ 
-            "First Answer",
-            "Second Answer",
-            "Third Answer",
-            "Fourth Answer"  
-          ],
-          a: 3
-        }
+$(document).ready(function(){
+  id = getId();
+  quiz();
+});
+
+function getId(){
+  var id = /=(.*)/.exec(document.location.href);
+  if(id){
+  return id[1];
   }
+  else{
+    return null;
+  }
+}
 
 var colors = ["blue","red","orange","green","purple"]
 
@@ -71,31 +63,68 @@ function nextQ(answerNum){
   currQ = $('.quiz-container').data("question");
   ansCollection[currQ] = answerNum;
   $('.quiz-container').data("question",currQ += 1);
-  destroyQs(currQ);
+  if(currQ <= 5){
+    destroyQs(currQ,makeQs);
+  }
+  else{
+    destroyQs();
+    endQuiz();
+  }
 }
 
-function destroyQs(currQ){
+function destroyQs(currQ,callback){
   $('.quiz-container').children().fadeOut(500, function(){
     $('.quiz-container').children().remove();
-    makeQs(currQ);
+    if(callback){
+      callback(currQ)
+    }
   });
 }
   
 function makeQs(currQ){
-  var container = $('.quiz-container');
-  var question = qElement.clone();
-  question.filter('.question-text').html(questions[currQ].q);
-  question.hide().appendTo(container).fadeIn(500);
+    var container = $('.quiz-container');
+    var question = qElement.clone();
+    question.filter('.question-text').html(questions[currQ].q);
+    question.hide().appendTo(container).fadeIn(500);
 
-  var answers = questions[currQ].answers;
+    var answers = questions[currQ].answers;
 
-  for(i=0; i< answers.length; i++){
-    createAnswer(answers[i],(i+1).toString(),i+1,colors[i]);
-  }
+    for(i=0; i< answers.length; i++){
+      createAnswer(answers[i],(i+1).toString(),i+1,colors[i]);
+    }
 }
 
+function endQuiz(){
+  sendResults();
+  var points = 0;
+  for(i=1; i < ansCollection.length; i++){
+    if( ansCollection[i] === questions[i].a ){
+      points += 1;
+    }
+  }
+  storeLocal(points);
+  window.location.href = "/results"
+}
 
+function sendResults(){
+  data = {
+    source: 'refugeesurvey Quiz',
+    tags:{
+      answers: ansCollection,
+      send_email: 0
+    }
+  }
+  id ? data.external_id = id : null;
+  sendData(data);
+}
 
-
-
+function storeLocal(points){
+  var dataStore = {
+    answers: ansCollection,
+    points: points,
+    id: id
+  }
+  console.log(dataStore);
+  localStorage.setItem('refugeeQuiz', JSON.stringify(dataStore));
+}
 
