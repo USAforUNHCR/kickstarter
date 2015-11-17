@@ -3,7 +3,10 @@
 var introText = "Do you know which communities in the U.S. are most welcoming for refugees?";
 var ansElement = {};
 var qElement = {};
+var subAnswer = {};
+var subElement = {};
 var ansCollection = [];
+var subCollection = {};
 
 $(document).ready(function(){
   id = getId();
@@ -25,6 +28,8 @@ var colors = ["blue","red","orange","green","purple"]
 function quiz(){
   ansElement = $('.answer-container').detach();
   qElement = $('.question-text').clone();
+  subAnswer = $('.sub-answer-container').detach();
+  subElement = $('.sub-container').detach();
   $('.quiz-container').data({question: 0});
   buttonListener();
   quizInit(introText);
@@ -41,9 +46,25 @@ function buttonListener(){
   var quizCont = $('.quiz-container');
   quizCont.click(event,function(){
     event.preventDefault();
-    answerNum = $(event.target.closest('.answer-container')).data("ansNumber");
+    var answerNum = $(event.target.closest('.answer-container')).data("ansNumber");
     nextQ(answerNum);
   });
+}
+
+function subListener(cQ){
+  var subBut = $('.subContainer');
+  subBut.click(event,function(){
+    event.preventDefault();
+    var answerNum = $(event.target.closest('.sub-answer-container')).data("ansNumber");
+    subCollection[cQ] = answerNum;
+    console.log(subCollection);
+    closeModal();
+  });
+}
+
+function closeModal(){
+  $('.sub-container').remove();
+  $('#overlay').css('visibility','hidden');
 }
 
 function createAnswer(text,label,data,color){
@@ -60,7 +81,10 @@ function createAnswer(text,label,data,color){
 }
 
 function nextQ(answerNum){
-  currQ = $('.quiz-container').data("question");
+  var currQ = $('.quiz-container').data("question");
+  if(questions[currQ] && questions[currQ].subQ){
+    modalQ(currQ);
+  }
   ansCollection[currQ] = answerNum;
   $('.quiz-container').data("question",currQ += 1);
   if(currQ <= 5){
@@ -70,6 +94,25 @@ function nextQ(answerNum){
     destroyQs();
     endQuiz();
   }
+}
+
+function modalQ(cQ){
+  $('#overlay').css('visibility','visible');
+  var subQuestion = subElement.clone();
+  subQuestion.find('.sub-question-text').html(questions[cQ].subQ.q);
+  makeSubAnswers(subQuestion,cQ).appendTo('#overlay');
+  subListener(cQ);
+}
+
+function makeSubAnswers(question,cQ){
+  for(var i=0; i < questions[cQ].subQ.a.length; i++){
+    answer = subAnswer.clone();
+    answer.find('.sub-ans-button').html(questions[cQ].subQ.a[i]);
+    answer.filter('.sub-answer-container').data('question')
+    answer.appendTo(question);
+    return question;
+  }
+
 }
 
 function destroyQs(currQ,callback){
@@ -89,7 +132,7 @@ function makeQs(currQ){
 
     var answers = questions[currQ].answers;
 
-    for(i=0; i< answers.length; i++){
+    for(var i=0; i< answers.length; i++){
       createAnswer(answers[i],(i+1).toString(),i+1,colors[i]);
     }
 }
@@ -97,7 +140,7 @@ function makeQs(currQ){
 function endQuiz(){
   sendResults();
   var points = 0;
-  for(i=1; i < ansCollection.length; i++){
+  for(var i=1; i < ansCollection.length; i++){
     if( ansCollection[i] === questions[i].a ){
       points += 1;
     }
@@ -127,4 +170,3 @@ function storeLocal(points){
   console.log(dataStore);
   localStorage.setItem('refugeeQuiz', JSON.stringify(dataStore));
 }
-
