@@ -1,9 +1,11 @@
 'use-strict';
 
-var introText = "Do you know which communities in the U.S. are most welcoming for refugees?";
+var introText = "Add your voice to our public opinion poll:";
 var ansElement = {};
 var qElement = {};
+var formEl = {};
 var ansCollection = [];
+
 
 $(document).ready(function(){
   id = getId();
@@ -25,13 +27,15 @@ var colors = ["blue","red","orange","green","purple"]
 function quiz(){
   ansElement = $('.answer-container').detach();
   qElement = $('.question-text').clone();
+  formEl = $('.zip-form').detach();
   $('.quiz-container').data({question: 0});
   buttonListener();
+  formListener();
   quizInit(introText);
 }
 
 function quizInit(){
-  var introAnswer ="Click here to begin the quiz.";
+  var introAnswer ="Click here to take the poll.";
   $('.question-text').html(introText);
   var label="1";
   createAnswer(introAnswer,label,1);
@@ -44,6 +48,14 @@ function buttonListener(){
     answerNum = $(event.target.closest('.answer-container')).data("ansNumber");
     nextQ(answerNum);
   });
+}
+
+function formListener(){
+  $('.quiz-container').submit(event,function(event){
+      event.preventDefault();
+      var zip = $('.quiz-container').find('#zip').val();
+      sendForm(zip);
+    });
 }
 
 function createAnswer(text,label,data,color){
@@ -67,16 +79,18 @@ function nextQ(answerNum){
     destroyQs(currQ,makeQs);
   }
   else{
-    destroyQs();
-    endQuiz();
+    destroyQs(6,endQuiz);
+    
   }
 }
 
 function destroyQs(currQ,callback){
   $('.quiz-container').children().fadeOut(500, function(){
+  });
+  $('.quiz-container').promise().done(function(){
     $('.quiz-container').children().remove();
-    if(callback){
-      callback(currQ)
+    if( callback ){
+      callback(currQ);
     }
   });
 }
@@ -96,21 +110,31 @@ function makeQs(currQ){
 
 function endQuiz(){
   sendResults();
-  var points = 0;
-  for(i=1; i < ansCollection.length; i++){
-    if( ansCollection[i] === questions[i].a ){
-      points += 1;
-    }
-  }
-  storeLocal(points);
-  window.location.href = "/results"
+  showForm();
+}
+
+function showForm(){
+  $('.quiz-container').off('click');
+  formEl.appendTo('.quiz-container');
 }
 
 function sendResults(){
-  data = {
+  var data = {
     source: 'refugeesurvey Quiz',
     tags:{
-      answers: ansCollection,
+      answers: ansCollection.slice(1).toString(),
+      send_email: 0
+    }
+  }
+  id ? data.externalId = id : null;
+  sendData(data);
+}
+
+function sendForm(zip){
+  var data = {
+    source: 'refugeesurvey zip',
+    tags:{
+      zip: zip,
       send_email: 0
     }
   }

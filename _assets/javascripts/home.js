@@ -8,34 +8,29 @@
   var questions = {
 
     1: {
-          q: "1.  How many U.S. mayors have officially declared their city to be a “Supportive Community” for resettled refugees?",
-          answers:[ "1","10","100","1000"],
-          a: 2,
-          p: 40
+          q: "Do you support the efforts of organizations like the UN Refugee Agency to serve people around the world who have been forced to flee their homes due to war, persecution and threats?",
+          answers:[ "Yes","No","I don't know"]
         },
     2: {
-          q: "2.  Which state housed the largest number of resettled refugees in 2013?",
-          answers:["Texas","California","New York","Tennessee"],
-          a: 3,
-          p: 50
+          q: "Do you support the following statement? The US can a take lead role in negotiating with foreign governments to ensure that all refugees who have fled their home country find a safe place to live.",
+          answers:["I strongly support it","I somewhat support it","I somewhat oppose it","I strongly oppose it","I don't know"]
         },
     3: {
-          q: "3.  Which state has the most cities in the “Supportive Communities” program?",
-          answers:["Wisconsin","California","Michigan","Pennsylvania"],
-          a: 1,
-          p:30
+          q: "Do you support the following statement? The US can increase the amount of money budgeted to help refugees and communities in countries that are hosting a large number of refugees.",
+          answers:["I strongly support it","I somewhat support it","I somewhat oppose it","I strongly oppose it","I don't know"]
       },
     4: {
-          q: "4.  In 2014, from where did most resettled refugees flee before arriving in the U.S.?",
-          answers:["Africa","Middle East","Latin America","Asia"],
-          a: 2,
-          p: 50
+          q: "Do you support the following statement? My community can accept some number of refugees from abroad into the community.",
+          answers:["I strongly support it","I somewhat support it","I somewhat oppose it","I strongly oppose it","I don't know"]
       },
     5: {
-        q: "Bonus Question: If your mayor were open to making your city a “Supportive Community” for refugees, would send him / her a message supporting the decision?",
-        answers: ["Yes!","Maybe","No"],
-        a:0     
+        q: "What types of groups are you currently connected with in your community?",
+        answers: ["Community group","Church group","Recreational sports league","Business/Trade association","None of the above"]
       },
+    6: {
+        q: "Bonus Question: Which elected official(s) can most directly impact the number of resettled refugees where you live?",
+        answers: ["Mayor", "Governor", "Member of Congress", "President of the United States"]
+      }
   }
 
 

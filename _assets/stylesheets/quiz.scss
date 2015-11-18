@@ -4,8 +4,8 @@ $body-text: helvetica, arial, sans-serif;
   font-family: $body-text;
   width: 50%;
   margin: auto;
-  @media screen and(max-width: 750px){
-    width: 70%;
+  @media screen and(max-width: 1300px){
+    width: 90%;
   }
 }
 
