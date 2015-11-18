@@ -23,6 +23,7 @@ $body-text: helvetica, arial, sans-serif;
   transition: all 0.5s ease-in-out;
   &:hover{
     transform: translate(4%, 0px);
+    -webkit-transform: translate(4%, 0px);
   }
 }
 .ans-button{

@@ -45,7 +45,7 @@ function buttonListener(){
   var quizCont = $('.quiz-container');
   quizCont.click(event,function(){
     event.preventDefault();
-    answerNum = $(event.target.closest('.answer-container')).data("ansNumber");
+    answerNum = $($(event.target).closest('.answer-container')).data("ansNumber");
     nextQ(answerNum);
   });
 }

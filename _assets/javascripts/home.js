@@ -12,19 +12,19 @@
           answers:[ "Yes","No","I don't know"]
         },
     2: {
-          q: "Do you support the following statement? The US can a take lead role in negotiating with foreign governments to ensure that all refugees who have fled their home country find a safe place to live.",
+          q: "<b>Do you support the following statement?</b> The US can a take lead role in negotiating with foreign governments to ensure that all refugees who have fled their home country find a safe place to live.",
           answers:["I strongly support it","I somewhat support it","I somewhat oppose it","I strongly oppose it","I don't know"]
         },
     3: {
-          q: "Do you support the following statement? The US can increase the amount of money budgeted to help refugees and communities in countries that are hosting a large number of refugees.",
+          q: "<b>Do you support the following statement?</b> The US can increase the amount of money budgeted to help refugees and communities in countries that are hosting a large number of refugees.",
           answers:["I strongly support it","I somewhat support it","I somewhat oppose it","I strongly oppose it","I don't know"]
       },
     4: {
-          q: "Do you support the following statement? My community can accept some number of refugees from abroad into the community.",
+          q: "<b>Do you support the following statement?</b> My community can accept some number of refugees from abroad into the community.",
           answers:["I strongly support it","I somewhat support it","I somewhat oppose it","I strongly oppose it","I don't know"]
       },
     5: {
-        q: "What types of groups are you currently connected with in your community?",
+        q: "What types of group are you most strongly connected with in your community?",
         answers: ["Community group","Church group","Recreational sports league","Business/Trade association","None of the above"]
       },
     6: {
