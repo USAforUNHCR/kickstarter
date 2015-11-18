@@ -1,6 +1,6 @@
 'use-strict';
 
-var introText = "Add your voice to our public opinion poll:";
+var introText = "Make your voice heard. Share your thoughts in our poll below so that we can send a clear message that the U.S. must continue to support and welcome refugees.";
 var ansElement = {};
 var qElement = {};
 var formEl = {};
@@ -140,6 +140,9 @@ function sendForm(zip){
   }
   id ? data.externalId = id : null;
   sendData(data);
+  $('.zip-submit').prop("disabled",true);
+  $('#zip').val('Thanks!');
+  $('#zip').prop("disabled",true);
 }
 
 function storeLocal(points){
