@@ -22,3 +22,6 @@ assets:
     - _assets/stylesheets
     - _assets/fonts
     - _assets
+
+  js_compressor: uglifier
+  css_compressor: sass
