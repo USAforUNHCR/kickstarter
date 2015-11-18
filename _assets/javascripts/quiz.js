@@ -75,7 +75,7 @@ function nextQ(answerNum){
   currQ = $('.quiz-container').data("question");
   ansCollection[currQ] = answerNum;
   $('.quiz-container').data("question",currQ += 1);
-  if(currQ <= 5){
+  if(currQ <= 6){
     destroyQs(currQ,makeQs);
   }
   else{
