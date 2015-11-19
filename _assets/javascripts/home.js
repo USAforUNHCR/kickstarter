@@ -25,7 +25,7 @@
       },
     5: {
         q: "What types of group are you most strongly connected with in your community?",
-        answers: ["Community group","Church group","Recreational sports league","Business/Trade association","None of the above"]
+        answers: ["Community group","Religious organization","Recreational sports league","Business/Trade association","None of the above"]
       },
     6: {
         q: "Bonus Question: Which elected official(s) can most directly impact the number of resettled refugees where you live?",
