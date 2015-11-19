@@ -43,7 +43,7 @@ function quizInit(){
 
 function buttonListener(){
   var quizCont = $('.quiz-container');
-  quizCont.click(event,function(){
+  quizCont.click(function(event){
     event.preventDefault();
     answerNum = $($(event.target).closest('.answer-container')).data("ansNumber");
     nextQ(answerNum);
@@ -51,7 +51,7 @@ function buttonListener(){
 }
 
 function formListener(){
-  $('.quiz-container').submit(event,function(event){
+  $('.quiz-container').submit(function(event){
       event.preventDefault();
       var zip = $('.quiz-container').find('#zip').val();
       sendForm(zip);
