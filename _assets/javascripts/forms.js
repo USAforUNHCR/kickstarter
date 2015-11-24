@@ -6,6 +6,8 @@ $(document).ready(function(){
   id = getId();
   reachListener();
   messageListener();
+  dialogListener();
+  dialogCloseListener();
 })
 
 function getId(){
@@ -66,7 +68,24 @@ function messageListener(){
     var form = $('.message-form');
     gwData.tags.message = form.find('.message-div').html();
     gwData.source = gwData.source + " message";
-    sendData(gwData);
+    debugger;
     $('#message-submit').hide();
+    $('.message-form').append('<span>Thanks for your message</span>');
+    sendData(gwData);
   });
+}
+
+function dialogListener(){
+  $('.message-form').click(function(event){
+    event.stopPropagation();
+    if($('.message-div').attr('contenteditable') === 'false'){
+    $(".dialog").show();
+  }
+  })
+}
+
+function dialogCloseListener(){
+  $(document).click(function(event){
+    $('.dialog:visible').hide();
+  })
 }
