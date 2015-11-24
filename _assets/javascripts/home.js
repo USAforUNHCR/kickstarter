@@ -8,7 +8,6 @@
 function sendData(data){
   id ? data.externalId = id : null;
   data.tags.send_email = 0;
-  console.log(data);
   gw.supporters.create(data)
   .then(function(res){
     console.log(res);
