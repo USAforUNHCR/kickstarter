@@ -14,8 +14,7 @@ exclude: [vendor,'Gemfile','Gemfile.lock','Readme.md']
 
 #Assets Pipeline
 assets:
-  # js_compressor: uglifier
-  # css_compressor: sass
+
   sources:
     - _assets/images
     - _assets/javascripts

@@ -1,0 +1,142 @@
+.thank-you-card{
+  font-size: 18pt;
+  & form{
+    width: 80%;
+    font-size: 18pt;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 30px;
+    @media screen and (max-width: 600px){
+      width: 95%;
+    }
+    & label{
+      display: inline-block;
+      text-align: right;
+      width: 35%;
+      @media screen and (max-width: 700px){
+        font-size: 14pt;
+      }
+      @media screen and (max-width: 440px){
+        width: 30%;
+      }
+    }
+    & input{
+      width: 40%;
+      &[type="submit"]{
+        display: block;
+        margin: auto;
+        margin-top: 12px;
+        font-family: inherit;
+        font-size: 22pt;
+      }
+    }
+
+  }
+}
+
+.reach-out{
+ font-size: 18pt;
+  & form{
+    width: 80%;
+    font-size: 18pt;
+    max-width: 650px;
+    margin: auto;
+    margin-bottom: 25px;
+    @media screen and (max-width: 600px){
+      width: 95%;
+    }
+    & label{
+      display: inline-block;
+      text-align: right;
+      width: 35%;
+      @media screen and (max-width: 700px){
+        font-size: 14pt;
+      }
+      @media screen and (max-width: 455px){
+        width: 40%;
+      }
+    }
+    & select{
+      width: 40%;
+    }
+    & input{
+      width: 40%;
+      &[type="submit"]{
+        display: block;
+        margin: auto;
+        margin-top: 12px;
+        font-family: inherit;
+        font-size: 22pt;
+        @media screen and (max-width: 650px){
+          width: 70%;
+        }
+      }
+    }
+
+  }
+}
+
+.message-form{
+  width: 80%;
+  font-size: 18pt;
+  max-width: 600px;
+  margin: auto;
+  @media screen and (max-width: 600px){
+    width: 95%;
+  }
+  & label{
+    display: inline-block;
+    text-align: right;
+    width: 35%;
+    @media screen and (max-width: 700px){
+      font-size: 14pt;
+    }
+    @media screen and (max-width: 455px){
+      width: 40%;
+    }
+  }
+  & input{
+    &[type="submit"]{
+      margin: auto;
+      font-family: inherit;
+      font-size: 22pt;
+    }
+  }
+}
+
+#message-submit{
+  font-size: 14pt;
+  padding: 8px;
+  border-radius: 5px;
+  width: 60%;
+  margin: auto;
+  color: white;
+  background-color: blue;
+  transition: all .2s ease-in-out;
+  // display: none;
+  &:hover{
+    background-color: black;
+    text-decoration: none;
+  }
+}
+
+.reach-out-text{
+  width: 70%;
+  margin: auto;
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.message-div{
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  font-family: serif;
+  text-align: left;
+  border: solid 2px grey;
+  margin-bottom: 10px;
+
+}
+.asterix{
+  color: red;
+}
