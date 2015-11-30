@@ -53,6 +53,7 @@
         font-size: 14pt;
       }
       @media screen and (max-width: 455px){
+        font-size: 12pt;
         width: 40%;
       }
     }
@@ -66,7 +67,7 @@
         margin: auto;
         margin-top: 12px;
         font-family: inherit;
-        font-size: 22pt;
+        font-size: 12pt;
         @media screen and (max-width: 650px){
           width: 70%;
         }
@@ -92,6 +93,7 @@
       font-size: 14pt;
     }
     @media screen and (max-width: 455px){
+      font-size: 12pt;
       width: 40%;
     }
   }
