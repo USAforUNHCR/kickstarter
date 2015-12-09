@@ -28,13 +28,13 @@ function reachListener(){
     data.tags = {};
     var tags = data.tags;
     data.email = form.find("[name='email']").val();
-    tags.fname = form.find("[name='fname']").val();
-    tags.addr1 = form.find("[name='addr1']").val();
-    tags.addr2 = form.find("[name='addr2']").val();
-    tags.city = form.find("[name='city']").val();
-    tags.state = form.find("[name='state']").val();
+    data.givenName = form.find("[name='fname']").val();
+    data.address1 = form.find("[name='addr1']").val();
+    data.address2 = form.find("[name='addr2']").val();
+    data.city = form.find("[name='city']").val();
+    data.state = form.find("[name='state']").val();
     var stateLong = form.find("[value='" + tags.state + "']").html();
-    tags.zip = form.find("[name='zip']").val();
+    data.postalCode = form.find("[name='zip']").val();
     customForm(data,stateLong);
     if(form.hasClass('mayor')){
       data.source = ("kickstarter mayor");
@@ -43,19 +43,20 @@ function reachListener(){
       data.source = ("kickstarter governor");
       geofunc(tags.zip);  
     }
+    else if(form.hasClass('aid-worker')){
+      data.source = ("kickstarter thanks");
+    }
     gwData = data;
     sendData(data);
   });
 }
 
 function customForm(data,stateLong){
-  var tags = data.tags;
-  var email = data.email;
   var message = $('.message-div');
-  message.find('.mess-name').html(tags.fname);
-  message.find('.state').html(tags.state);
-  message.find('.city').html(tags.city);
-  message.find('.email').html(email);
+  message.find('.mess-name').html(data.givenName);
+  message.find('.state').html(data.state);
+  message.find('.city').html(data.city);
+  message.find('.email').html(data.email);
   message.find('.state-long').html(stateLong);
   message.attr('contenteditable',true);
   $('#message-submit').show();
